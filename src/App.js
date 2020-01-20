@@ -1,26 +1,39 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import {BrowserRouter,Switch,Route} from 'react-router-dom'
 
-function App() {
+import Menu  from './component/Menu.js'
+import Success from './component/Success'
+import Cancel from './component/Cancel'
+import Footer from './component/Footer.js'
+import About  from './component/About.js'
+import Shop from './component/Shop.js'
+import Homepage from './Homepage.js'
+import SingleProduct from './component/singleProduct.js'
+import Contact from './component/Contact.js'
+
+
+function Appp() {
+  
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <BrowserRouter>
+        <Menu/>
+        <Switch>
+            <Route path="/" exact component={Homepage}/>
+            <Route path="/product/:productId" exact component={SingleProduct}/>
+            <Route path="/shop" exact component={Shop}/>
+            <Route path="/about" exact component={About}/>
+            <Route path="/contact" exact component={Contact}/>
+            <Route path="/success" exact component={Success}/>
+            <Route path="/cancel" exact component={Cancel}/>
+        </Switch>
+        <Footer/>
+      </BrowserRouter>
+    </>
   );
 }
 
-export default App;
+export default Appp;
